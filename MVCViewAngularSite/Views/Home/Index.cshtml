@@ -9,7 +9,8 @@
     </head>
     <body>
         <div>
-            Hello from /Home/Index
+            Hello from /Home/Index 
+            (logged with claim '@Request.GetOwinContext().Authentication.User.Claims.FirstOrDefault(x => x.Type == "name")')
         </div>
     </body>
 </html>
