@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello world with AngularJS</title>
+        <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    </head>
+    <body ng-app="theAngularApp">
+    <div ng-controller="UtilsController">
+        The AngularJS view allows anonymous users,<br/>
+        but the Web API action at /api/utils/time is decorated with [Authorize]
+        <br/><br/>
+        Web API server time: {{serverTime}}
+    </div>
+
+        <script type="text/javascript">
+            // The angular app
+            var theAngularApp = angular.module('theAngularApp', []);
+
+            // The one and only controller
+            theAngularApp.controller('UtilsController', function($scope, $http) {
+                $http({
+                    method: 'GET',
+                    url: '@Url.HttpRouteUrl("GetServerTime", new {})'
+                }).then(function successCallback(response) {
+                    $scope.serverTime = response.data;
+                }, function errorCallback(response) {
+                    $scope.serverTime = "Api returned " + response.status + " - " + response.statusText;
+                });
+            });
+        </script>
+    </body>
+</html>
+

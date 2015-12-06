@@ -15,6 +15,11 @@ namespace MVCViewAngularSite.Controllers
             return View();
         }
 
+        public ActionResult Angular()
+        {
+            return View();
+        }
+
         public ActionResult Login()
         {
             return View();
