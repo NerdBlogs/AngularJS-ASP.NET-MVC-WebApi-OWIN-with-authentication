@@ -7,13 +7,16 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Logout</title>
+    <title>Login</title>
 </head>
 <body>
 <div>
-    Logged out
+    Click to login, for demo purposes
     <br/>
-    @Html.ActionLink("Login", "Login") again.
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Log in"/>
+    }
 </div>
 </body>
 </html>
